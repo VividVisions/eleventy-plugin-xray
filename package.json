@@ -1,0 +1,59 @@
+{
+	"name": "eleventy-plugin-xray",
+	"version": "1.0.0-alpha.1",
+	"description": "Xray is a plugin for Eleventy which visualizes the complete data hierarchy and build information of every rendered page directly in the browser.",
+	"author": "Walter Krivanek <walter@vividvisions.com>",
+	"license": "MIT",
+	"keywords": [
+		"xray",
+		"eleventy",
+		"eleventy-plugin",
+		"data",
+		"visualisation",
+		"tree",
+		"hierarchy",
+		"11ty"
+	],
+	"type": "module",
+	"homepage": "https://github.com/VividVisions/eleventy-plugin-xray",
+	"bugs": "https://github.com/VividVisions/eleventy-plugin-xray/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VividVisions/eleventy-plugin-xray.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"buildjs": "npx rollup -c",
+		"buildcss": "npx sass --embed-source-map ./client-src/xray.scss ./client-dist/xray.css",
+		"build": "npm run buildjs && npm run buildcss",
+		"distjs": "NODE_ENV=production npx rollup -c",
+		"distcss": "npx sass  --no-source-map --style=compressed ./client-src/xray.scss ./client-dist/xray.css",
+		"dist": "npm run distjs & npm run distcss",
+		"watchjs": "npx rollup -c -w",
+		"watchcss": "npx sass --embed-source-map --watch ./client-src/xray.scss ./client-dist/xray.css",
+		"watch": "npm run watchjs & npm run watchcss"
+	},
+	"11ty": {
+		"compatibility": ">=3.0.0-beta.1"
+	},
+	"engines": {
+		"node": ">= 18.20"
+	},
+	"exports": {
+		".": "./lib/plugin.js",
+		"./plugin": "./lib/plugin.js"
+	},
+	"dependencies": {
+		"conditional-tag": "^1.2.0",
+		"debug": "^4.3.6",
+		"escape-html": "^1.0.3",
+		"git-repo-info": "^2.1.1"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^26.0.1",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-terser": "^0.4.4",
+		"rollup": "^4.21.0",
+		"sass": "^1.77.8"
+	}
+}
