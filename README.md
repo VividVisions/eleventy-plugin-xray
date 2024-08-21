@@ -16,6 +16,10 @@ With Xray you can, for example, quickly debug your pagination. Or confirm that y
   - [Build information](#build-information)
   - [Page data](#page-data)
   - [Global data](#global-data)
+- [Modes of operation](#modes-of-operation)
+  - [serve](#serve)
+  - [build](#build)
+  - [auto](#auto) 
 - [Performance](#performance)
 - [License](#license)
 
@@ -56,6 +60,7 @@ List of available options:
 
 |Name | Description | Type of value | Default |
 | -- | -- | -- | -- |
+| `mode` | The mode in which Xray will operate ('serve', 'build', 'auto'). See [modes of operation](#modes-of-operation).  | `String` | 'auto' |
 | `dir` | The directory in which Xray writes its assets and data files. Relative to `eleventyConfig.dir.output`. | `String` | '_xray' |
 | `benchmarks` | Should benchmark data be parsed and displayed? | `Boolean` | `true` | 
 | `git` | Should Git info of `eleventyConfig.dir.input` be displayed? | `Boolean` | `true` |
@@ -89,6 +94,19 @@ You can click on every branch to open it and see the underlying data and branche
 The available global data. For the sake of clarity, this is displayed separately from the page data. Global data includes data from your global data files, Eleventy supplied data and your collections. The latter is a special case: Collections will be listed but not (yet?) traversed.
 
 You can navigate the branches here as well.
+
+## Modes of operation
+Through the option `mode`, three modes of operation can be configured: `serve`, `build` and `auto`.
+
+### serve
+If Eleventy runs in `serve` mode as well, all Xray files will be served virtually through the [Eleventy Dev Server](https://www.11ty.dev/docs/dev-server/). No files will be written to disk. Virtual files will have precedence over static files e.g. from a previous run in `build` mode.  
+If Eleventy runs in another mode, Xray is deactivated.
+
+### build
+All Xray files will be written to disk and served as static files. Xray uses relative paths to load these static files, so Xray even works when opening a rendered HTML page in the browser without the Eleventy Dev Server.
+
+### auto
+Synchronizes Xray's mode with Eleventy's run mode.
 
 ## Performance
 Since Xray recursively parses the complete data hierarchy of _every_ page it has been added to, it can _significantly_ extend Eleventy's build times. If you build a website with hundreds of pages and/or hundreds of data sets, consider reducing `maxDepth` to a minimum and adding the shortcode only to the page(s) you are currently working on.
