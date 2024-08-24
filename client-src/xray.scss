@@ -467,7 +467,7 @@ ul.tree {
 code {
 	display: inline-block;
 	font-family: "Verdana", sans-serif;
-	font-size: 1em;
+	font-size: .9em;
 	// line-height: 17px;//1.15em;
 
 	&::before,
@@ -476,7 +476,7 @@ code {
 		display: inline;
 		color: var(--col_type);
 		font-style: italic;
-		font-size: 0.9em;
+		// font-size: 0.9em;
 	}
 
 	&::before {
@@ -485,6 +485,12 @@ code {
 
 	&::after {
 		padding-left: 1px;
+	}
+
+	span::before,
+	span::after {
+		// font-style: italic;
+		// font-size: 0.9em;
 	}
 
 	&.array {
@@ -509,7 +515,21 @@ code {
 
 	&.object {
 		&::before {
-			content: "object{}";
+			content: "object";
+		}
+
+		& span {
+			color: var(--col_num);
+
+			&::before {
+				content: "{";
+				color: var(--col_type);
+			}
+
+			&::after {
+				content: "}";
+				color: var(--col_type);
+			}
 		}
 	}
 
