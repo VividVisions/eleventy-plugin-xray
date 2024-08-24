@@ -1,6 +1,6 @@
 {
 	"name": "eleventy-plugin-xray",
-	"version": "1.0.0-alpha.1",
+	"version": "1.0.0-alpha.2",
 	"description": "Xray is a plugin for Eleventy which visualizes the complete data hierarchy and build information of every rendered page directly in the browser.",
 	"author": "Walter Krivanek <walter@vividvisions.com>",
 	"license": "MIT",
