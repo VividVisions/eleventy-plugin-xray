@@ -389,6 +389,12 @@ div#buildinfo {
 
 ul.root {
 	list-style: none;
+	
+	li span.where {
+		-webkit-user-select: none;
+		user-select: none;
+		cursor: default;
+	}
 }
 
 ul.tree {
@@ -401,6 +407,10 @@ ul.tree {
 		white-space: nowrap;
 		-webkit-user-select: none;
 		user-select: none;
+
+		& span.where {
+			cursor: pointer;
+		}
 
 		&::before {
 			display: inline-block;
