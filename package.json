@@ -22,7 +22,6 @@
 		"url": "git+https://github.com/VividVisions/eleventy-plugin-xray.git"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"buildjs": "npx rollup -c",
 		"buildcss": "npx sass --embed-source-map ./client-src/xray.scss ./client-dist/xray.css",
 		"build": "npm run buildjs && npm run buildcss",
@@ -31,13 +30,21 @@
 		"dist": "npm run distjs & npm run distcss",
 		"watchjs": "npx rollup -c -w",
 		"watchcss": "npx sass --embed-source-map --watch ./client-src/xray.scss ./client-dist/xray.css",
-		"watch": "npm run watchjs & npm run watchcss"
+		"watch": "npm run watchjs & npm run watchcss",
+		"test": "NODE_ENV=testing mocha --require \"./test/hooks.js\" \"./test/unit/**/*.test.js\" \"./test/integration/**/*.test.js\"",
+		"test:unit": "NODE_ENV=testing mocha \"./test/unit/**/*.test.js\"",
+		"test:integration": "NODE_ENV=testing mocha \"./test/integration/**/*.test.js\"",
+		"test:coverage": "c8 -c './.c8rc.json' npm test"
 	},
 	"11ty": {
 		"compatibility": ">=3.0.0-beta.1"
 	},
 	"engines": {
 		"node": ">= 18.20"
+	},
+	"imports": {
+		"#lib/*": "./lib/*",
+		"#test/*": "./test/*"
 	},
 	"exports": {
 		".": "./lib/plugin.js",
