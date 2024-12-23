@@ -1,0 +1,7 @@
+{
+	"src": "./lib",
+	"exclude": ["docs", "test", "client-src", "client-dist"],
+	"all": true,
+	"temp-directory": "./test/coverage/tmp",
+	"clean": true
+}
