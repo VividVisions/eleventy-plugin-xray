@@ -1,0 +1,6 @@
+{
+	"ui": "bdd",
+	"recursive": true,
+	"check-leaks": true,
+	"parallel": false	
+}
