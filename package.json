@@ -44,7 +44,6 @@
 		"./plugin": "./lib/plugin.js"
 	},
 	"dependencies": {
-		"conditional-tag": "^1.2.1",
 		"debug": "^4.3.6",
 		"escape-html": "^1.0.3",
 		"git-repo-info": "^2.1.1"
